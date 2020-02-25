@@ -1,0 +1,81 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="460" height="136" view_box="0 0 460 136"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Tue, 25 Feb 2020 07:18:14</desc>
+
+<rect id="frame" x="0" y="0" width="460" height="136" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association CONTENIR -->
+<line x1="32" y1="68" x2="127" y2="68" stroke="#f46d43" stroke-width="2"/>
+<text x="60" y="85.0" fill="#4575b4" font-family="Verdana" font-size="12">0,N</text>
+<line x1="228" y1="68" x2="127" y2="68" stroke="#f46d43" stroke-width="2"/>
+<text x="173" y="85.0" fill="#4575b4" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-CONTENIR">
+	<path d="M 153 43 a 14 14 90 0 1 14 14 V 68 h -80 V 57 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 167 68.0 v 11 a 14 14 90 0 1 -14 14 H 101 a 14 14 90 0 1 -14 -14 V 68.0 H 80" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="87" y="43" width="80" height="50" fill="none" rx="14" stroke="#f46d43" stroke-width="2"/>
+	<line x1="87" y1="68" x2="167" y2="68" stroke="#f46d43" stroke-width="1"/>
+	<text x="94" y="60.7" fill="#000000" font-family="Verdana" font-size="12">CONTENIR</text>
+</g>
+
+<!-- Association POSSEDER -->
+<line x1="228" y1="68" x2="330" y2="68" stroke="#f46d43" stroke-width="2"/>
+<text x="262" y="85.0" fill="#4575b4" font-family="Verdana" font-size="12">0,N</text>
+<line x1="427" y1="68" x2="330" y2="68" stroke="#f46d43" stroke-width="2"/>
+<text x="376" y="85.0" fill="#4575b4" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-POSSEDER">
+	<path d="M 357 43 a 14 14 90 0 1 14 14 V 68 h -82 V 57 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 371 68.0 v 11 a 14 14 90 0 1 -14 14 H 303 a 14 14 90 0 1 -14 -14 V 68.0 H 82" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="289" y="43" width="82" height="50" fill="none" rx="14" stroke="#f46d43" stroke-width="2"/>
+	<line x1="289" y1="68" x2="371" y2="68" stroke="#f46d43" stroke-width="1"/>
+	<text x="296" y="60.7" fill="#000000" font-family="Verdana" font-size="12">POSSEDER</text>
+</g>
+
+<!-- Entity LISTE -->
+<g id="entity-LISTE">
+	<g id="frame-LISTE">
+		<rect x="9" y="34" width="46" height="25" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="9" y="59.0" width="46" height="43" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="9" y="34" width="46" height="68" fill="none" stroke="#74add1" stroke-width="2"/>
+		<line x1="9" y1="59" x2="55" y2="59" stroke="#74add1" stroke-width="1"/>
+	</g>
+	<text x="14" y="51.7" fill="#000000" font-family="Verdana" font-size="12">LISTE</text>
+	<text x="14" y="76.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="14" y1="79" x2="26" y2="79" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="93.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
+</g>
+
+<!-- Entity CARTE -->
+<g id="entity-CARTE">
+	<g id="frame-CARTE">
+		<rect x="199" y="9" width="58" height="25" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="199" y="34.0" width="58" height="93" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="199" y="9" width="58" height="118" fill="none" stroke="#74add1" stroke-width="2"/>
+		<line x1="199" y1="34" x2="257" y2="34" stroke="#74add1" stroke-width="1"/>
+	</g>
+	<text x="207" y="26.7" fill="#000000" font-family="Verdana" font-size="12">CARTE</text>
+	<text x="204" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="204" y1="54" x2="216" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="204" y="68.8" fill="#000000" font-family="Verdana" font-size="12">titre</text>
+	<text x="204" y="85.8" fill="#000000" font-family="Verdana" font-size="12">position</text>
+	<text x="204" y="102.8" fill="#000000" font-family="Verdana" font-size="12">couleur</text>
+	<text x="204" y="119.8" fill="#000000" font-family="Verdana" font-size="12">liste_id</text>
+</g>
+
+<!-- Entity LABEL -->
+<g id="entity-LABEL">
+	<g id="frame-LABEL">
+		<rect x="403" y="34" width="48" height="25" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="403" y="59.0" width="48" height="43" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="403" y="34" width="48" height="68" fill="none" stroke="#74add1" stroke-width="2"/>
+		<line x1="403" y1="59" x2="451" y2="59" stroke="#74add1" stroke-width="1"/>
+	</g>
+	<text x="408" y="51.7" fill="#000000" font-family="Verdana" font-size="12">LABEL</text>
+	<text x="408" y="76.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="408" y1="79" x2="420" y2="79" stroke="#000000" stroke-width="1"/>
+	<text x="408" y="93.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
+</g>
+</svg>
