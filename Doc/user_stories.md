@@ -11,7 +11,9 @@
 |Utilisateur| Déplacer une carte d'une liste à l'autre| Afin de la changer de liste|
 |Utilisateur| Supprimer une liste| Enlever une liste au kanban|
 |Utilisateur| Supprimer une carte| Enlever une carte à une liste|
-|Utilisateur| Ajouter un label| mettre un label sur une carte| Option
-|Utilisateur| Modifier un label| Changer le label d'une carte|
-|Utilisateur| Supprimer un label| Supprimer le label d'une carte|
+|Utilisateur| Ajouter un label| ajouter un label dans la liste des labels| Option
+|Utilisateur| Modifier un label| |
+|Utilisateur| Supprimer un label| |
+|Utilisateur| Associer un label à une carte| |
+|Utilisateur| Dissocier un label à une carte| |
 |Utilisateur| donner une couleur à une carte|de mieux s'organiser| Option
