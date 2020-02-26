@@ -51,8 +51,7 @@ DROP TABLE IF EXISTS "cartes_has_labels" ;
 
 CREATE TABLE IF NOT EXISTS "cartes_has_labels" (
   "liste_id" INT NOT NULL,
-  "label_id_id" INT NOT NULL,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "label_id" INT NOT NULL,
   PRIMARY KEY ("liste_id", "label_id"));
 
 
@@ -83,15 +82,15 @@ INSERT INTO "cartes" ("id", "titre", "position", "couleur", "created_at", "updat
 INSERT INTO "labels" ("id", "nom", "created_at", "updated_at") VALUES
 (1, 'frontend', '2018-10-04 12:15:33', NULL),
 (2, 'backend', '2018-10-04 12:15:33', NULL),
-(2, 'urgent', '2018-10-04 12:15:33', NULL);
+(3, 'urgent', '2018-10-04 12:15:33', NULL);
 
 --
 -- Déchargement des données de la table "carte_has_label"
 --
 
-INSERT INTO "cartes_has_labels" ("liste_id", "label_id", "created_at") VALUES
-(1, 2, '2018-10-04 12:15:33'),
-(2, 1 , '2018-10-04 12:15:33');
+INSERT INTO "cartes_has_labels" ("liste_id", "label_id") VALUES
+(1, 2),
+(2, 1);
 
 COMMIT;
 
