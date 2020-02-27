@@ -18,14 +18,16 @@ Card.belongsToMany(Label, {
     through: "card_has_label",
     foreignKey: "card_id",
     otherKey: "label_id",
-    as: "labels"
+    as: "labels",
+    timestamps: false
 });
 
 Label.belongsToMany(Card, {
     through: "card_has_label",
     foreignKey: "label_id",
     otherKey: "card_id",
-    as: "cards"
+    as: "cards",
+    timestamps: false
 });
 
 module.exports = {List, Label, Card};
