@@ -81,12 +81,14 @@ const cardController = {
             const cardId = req.params.id;
             const labelId = req.body
             let card = await Card.findByPk(cardId, {
-                include: ["labels"]
+                include: [{association: "labels"}]
             });
             if(card){
-                label_id: labelId
+                card.update({
+                    label_id: labelId
+                })
             }
-            res.send("label associé à la carte");
+            res.send("label associé à la carte " + label_id);
         }catch(err){
             res.status(404).send("impossible de trouver la carte");
         }
