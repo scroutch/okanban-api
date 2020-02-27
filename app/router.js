@@ -25,4 +25,6 @@ router.post('/label', labelController.labelAction);
 router.patch('/label/:id', labelController.updateLabel);
 router.delete('/label/:id', labelController.deleteLabel);
 
+router.post('/card/:id/label', cardController.addLabelToCard);
+
 module.exports = router;

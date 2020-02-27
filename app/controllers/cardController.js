@@ -74,6 +74,22 @@ const cardController = {
         }catch(err){
             res.status(404).send("impossible de trouver la carte");
         }
+    },
+
+    addLabelToCard: async(req, res) => {
+        try{
+            const cardId = req.params.id;
+            const labelId = req.body
+            let card = await Card.findByPk(cardId, {
+                include: ["labels"]
+            });
+            if(card){
+                label_id: labelId
+            }
+            res.send("label associé à la carte");
+        }catch(err){
+            res.status(404).send("impossible de trouver la carte");
+        }
     }
 };
 
