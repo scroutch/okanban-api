@@ -1,31 +1,31 @@
-const Liste = require('./liste');
+const List = require('./list');
 const Label = require('./label');
-const Carte = require('./carte');
+const Card = require('./card');
 
 //Association Liste <-> Carte
-Liste.hasMany(Carte, {
-    foreignKey: "liste_id",
-    as: "cartes"
+List.hasMany(Card, {
+    foreignKey: "list_id",
+    as: "cards"
 });
 
-Carte.belongsTo(Liste, {
-    foreignKey: "liste_id",
-    as: "liste"
+Card.belongsTo(List, {
+    foreignKey: "list_id",
+    as: "list"
 });
 
 //Association Carte <-> Label
-Carte.belongsToMany(Label, {
-    through: "cartes_has_labels",
-    foreignKey: "liste_id",
+Card.belongsToMany(Label, {
+    through: "card_has_label",
+    foreignKey: "card_id",
     otherKey: "label_id",
     as: "labels"
 });
 
-Label.belongsToMany(Carte, {
-    through: "cartes_has_labels",
+Label.belongsToMany(Card, {
+    through: "card_has_label",
     foreignKey: "label_id",
-    otherKey: "liste_id",
-    as: "cartes"
+    otherKey: "card_id",
+    as: "cards"
 });
 
-module.exports = {Liste, Label, Carte};
+module.exports = {List, Label, Card};

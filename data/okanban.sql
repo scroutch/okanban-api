@@ -1,101 +1,79 @@
--- -----------------------------------------------------
--- Schema okanban
--- -----------------------------------------------------
+-- Création des tables pour l'API oKanban
 
--- -----------------------------------------------------
--- Table "listes"
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS "listes";
-
-CREATE TABLE IF NOT EXISTS "listes" (
-  "id" SERIAL NOT NULL,
-  "nom" TEXT NOT NULL,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updated_at" TIMESTAMP NULL,
-  PRIMARY KEY ("id"));
-
--- -----------------------------------------------------
--- Table "cartes"
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS "cartes";
-
-CREATE TABLE IF NOT EXISTS "cartes" (
-  "id" SERIAL NOT NULL,
-  "titre" TEXT NOT NULL,
-  "position" INT NOT NULL DEFAULT 0,
-  "couleur" TEXT,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updated_at" TIMESTAMP NULL,
-  "liste_id" INT NOT NULL,
-  PRIMARY KEY ("id"));
-
--- -----------------------------------------------------
--- Table "labels"
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS "labels";
-
-CREATE TABLE IF NOT EXISTS "labels" (
-  "id" SERIAL NOT NULL,
-  "nom" TEXT NOT NULL,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updated_at" TIMESTAMP NULL,
-  PRIMARY KEY ("id"));
-
--- -----------------------------------------------------
--- Table "cartes_has_labels"
--- -----------------------------------------------------
-DROP TABLE IF EXISTS "cartes_has_labels" ;
-
-CREATE TABLE IF NOT EXISTS "cartes_has_labels" (
-  "liste_id" INT NOT NULL,
-  "label_id" INT NOT NULL,
-  PRIMARY KEY ("liste_id", "label_id"));
-
-
-
+-- ouverture d'une transaction 
+-- une transaction est un bloc d'instructions contigues. Si l'une des instructions échoue, c'est tout le bloc qui est annulé
 BEGIN;
 
---
--- Déchargement des données de la table "Listes"
---
+-- drop all tables !
+DROP TABLE IF EXISTS "list", "card", "label", "card_has_label";
 
-INSERT INTO "listes" ("id", "nom", "created_at", "updated_at") VALUES
-(1, 'node', '2018-10-04 12:15:33', NULL),
-(2, 'javascript', '2018-10-04 12:15:33', NULL);
+-- table "list"
+CREATE TABLE "list"(
+  "id" SERIAL PRIMARY KEY,
+  "title" TEXT NOT NULL UNIQUE,
+  "position" INT NOT NULL DEFAULT 0,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
+);
 
---
--- Déchargement des données de la table "Cartes"
---
+-- table "card"
+CREATE TABLE "card"(
+  "id" SERIAL PRIMARY KEY,
+  "title" TEXT NOT NULL,
+  "position" INT NOT NULL DEFAULT 0,
+  "color" TEXT NOT NULL DEFAULT '#fff',
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  "list_id" INT NOT NULL REFERENCES "list"("id")
+);
 
-INSERT INTO "cartes" ("id", "titre", "position", "couleur", "created_at", "updated_at", "liste_id") VALUES
-(1, 'Faire les models', 1, NULL, '2018-10-04 12:15:33', NULL, 1),
-(2, 'Finir le controller', 2, NULL, '2018-10-04 12:15:33', NULL, 1),
-(3, 'Faire un slider sur la homepage', 3, NULL, '2018-10-04 12:15:33', NULL, 2);
+-- table "label"
+CREATE TABLE "label"(
+  "id" SERIAL PRIMARY KEY,
+  "title" TEXT NOT NULL UNIQUE,
+  "color" TEXT NOT NULL DEFAULT '#fff',
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
+);
 
---
--- Déchargement des données de la table "Labels"
---
+-- table de liaison "card_has_label"
+CREATE TABLE "card_has_label"(
+  "card_id" INT NOT NULL REFERENCES "card"("id") ON DELETE CASCADE,
+  "label_id" INT NOT NULL REFERENCES "label"("id") ON DELETE CASCADE,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY ("card_id", "label_id")
+);
 
-INSERT INTO "labels" ("id", "nom", "created_at", "updated_at") VALUES
-(1, 'frontend', '2018-10-04 12:15:33', NULL),
-(2, 'backend', '2018-10-04 12:15:33', NULL),
-(3, 'urgent', '2018-10-04 12:15:33', NULL);
+-- validation de la transaction
+COMMIT;
 
---
--- Déchargement des données de la table "carte_has_label"
---
 
-INSERT INTO "cartes_has_labels" ("liste_id", "label_id") VALUES
-(1, 2),
+-- deuxième transaction, seeding !
+BEGIN;
+
+-- table list
+INSERT INTO "list" ("title", "position") VALUES
+('A FAIRE', 1),
+('EN COURS', 2),
+('TERMINE', 3);
+
+-- table card
+INSERT INTO "card" ("title", "position", "color", "list_id") VALUES
+('Rappeler maman', 1, '#f00', 1),
+('Implémenter une API', 1, DEFAULT, 2),
+('Soudoyer Chris',2, DEFAULT ,2),
+('Conception de l''api', 1, DEFAULT, 3),
+('Troller dans le chat', 2, 'yellow', 3);
+
+-- table label
+INSERT INTO "label" ("title", "color") VALUES
+('Urgent', 'red'),
+('Inutile', 'tomato');
+
+-- table de liaison
+INSERT INTO "card_has_label" ("card_id", "label_id") VALUES 
+(3, 2),
+(1, 1),
 (2, 1);
 
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-/* PostGres DOES NOT INCREMENT when inserting with explicit id values ! */

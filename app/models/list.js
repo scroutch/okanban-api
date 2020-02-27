@@ -2,25 +2,24 @@ const Sequelize = require('sequelize');
 
 const dbConnection = require('../db_connection');
 
-class Label extends Sequelize.Model{};
+class List extends Sequelize.Model{};
 
-Label.init({
+List.init({
     title: {
         type: Sequelize.TEXT,
         allowNull: false,
         unique: true
     },
-    color: {
-        type: Sequelize.TEXT,
+    position: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: "#fff"
-    }
+        defaultValue: 0
+    },
 },{
     sequelize: dbConnection,
-    tableName: "label",
+    tableName: "list",
     createdAt: "created_at",
     updatedAt: "updated_at"
 })
 
-
-module.exports = Label;
+module.exports = List;
