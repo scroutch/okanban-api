@@ -1,3 +1,35 @@
+# oKanban jours 3 et 4 : Mise en place API
+
+## Archi
+
+Mettre en place l'architecture "classique" d'une projet express : 
+- installer les dépendances nécessaires avec npm.
+- dossier `app/controllers`.
+- fichier `app/router.js`.
+- point d'entrée `index.js`.
+
+## Le Train-train Express
+
+Mettre en place le fichier `index.js`. Oui c'est vrai, c'est un peu toujours la même chose...
+
+## Premier controller, premières routes
+
+Créer le premier controller : `ListController`. 
+
+Implémenter toutes les routes "/list...". 
+
+Pour rappel, toute les routes sont listées [dans ce fichier](./DOC/routes.md)
+
+## Et tout le RESTe !
+
+Implémenter toutes les routes !
+
+Pour tester toutes ces routes, il existe plusieurs solutions : 
+- Créer un petit formulaire dans une page HTML, avec les bons attributs "method" et "action"
+- Envoyer des requêtes directement avec `curl` (la doc : https://curl.haxx.se/docs/manual.html)
+- Utiliser une application telle que [Insomnia](https://support.insomnia.rest/article/23-installation#ubuntu) ou [POSTMAN](https://www.getpostman.com/). **Cette solution est de loin la plus simple à utiliser**
+
+---
 # oKanban jour 2 : BDD
 
 ## De "concept" à "logique"
