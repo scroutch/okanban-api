@@ -94,6 +94,25 @@ const cardController = {
         }catch(err){
             res.status(404).send("impossible de trouver la carte");
         }
+    },
+
+    deleteLabelOfCard: async(req, res) => {
+        try{
+            const cardId = req.params.id;
+            const labelId = req.params.label_id;
+            let card = await Card.findByPk(cardId, {
+                include: [{association: "labels"}]
+            });
+            // console.log(card);
+            let label = await Label.findByPk(labelId);
+            // console.log(label);
+            if(card){
+                card.removeLabel(label);
+            }
+            res.send(card);
+        }catch(err){
+            res.status(404).send("impossible de trouver la carte");
+        }
     }
 };
 

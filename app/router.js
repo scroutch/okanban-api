@@ -26,5 +26,6 @@ router.patch('/label/:id', labelController.updateLabel);
 router.delete('/label/:id', labelController.deleteLabel);
 
 router.post('/card/:id/label', cardController.addLabelToCard);
+router.delete('/card/:id/label/:label_id', cardController.deleteLabelOfCard);
 
 module.exports = router;
