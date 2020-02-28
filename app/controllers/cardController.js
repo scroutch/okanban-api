@@ -1,4 +1,4 @@
-const {Card} = require('../models');
+const {Card, Label} = require('../models');
 
 const cardController = {
     allCards: async(req, res) => {
@@ -80,13 +80,17 @@ const cardController = {
         try{
             const cardId = req.params.id;
             const labelId = req.body.label_id;
+            // console.log(labelId);
             let card = await Card.findByPk(cardId, {
                 include: [{association: "labels"}]
             });
+            // console.log(card);
+            let label = await Label.findByPk(labelId);
+            // console.log(label);
             if(card){
-                card.addLabel(labelId);
+                card.addLabel(label);
             }
-            res.send('ok');
+            res.send(card);
         }catch(err){
             res.status(404).send("impossible de trouver la carte");
         }
