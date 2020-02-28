@@ -79,16 +79,14 @@ const cardController = {
     addLabelToCard: async(req, res) => {
         try{
             const cardId = req.params.id;
-            const labelId = req.body
+            const labelId = req.body.label_id;
             let card = await Card.findByPk(cardId, {
                 include: [{association: "labels"}]
             });
             if(card){
-                card.update({
-                    label_id: labelId
-                })
+                card.addLabel(labelId);
             }
-            res.send("label associé à la carte " + label_id);
+            res.send('ok');
         }catch(err){
             res.status(404).send("impossible de trouver la carte");
         }
